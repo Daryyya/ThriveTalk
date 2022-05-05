@@ -1,0 +1,23 @@
+.header__container {
+  padding: 30px 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__menu-element {
+  padding-right: 30px;
+}
+
+.header__btn {
+  padding-left: 60px;
+}

@@ -1,0 +1,42 @@
+.wrapper {
+}
+.header {
+
+		// .header__container
+
+		&__container {
+			padding: 30px 180px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		// .header__logo
+
+		&__logo {
+		}
+
+		// .header__body
+
+		&__body {
+			display: flex;
+		}
+
+		// .header__menu
+
+		&__menu {
+		}
+
+		// .header__menu-element
+
+		&__menu-element {
+			padding-right: 30px;
+		}
+
+		// .header__btn
+
+		&__btn {
+			padding-left: 60px;
+		}
+}
+.btn {
+}
