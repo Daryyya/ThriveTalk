@@ -1,42 +1,155 @@
 .wrapper {
 }
 .header {
+	&__container {
+		padding: 30px 180px;
+		display: flex;
 
-		// .header__container
+		justify-content: space-between;
 
-		&__container {
-			padding: 30px 180px;
-			display: flex;
-			justify-content: space-between;
+		@media(max-width: 1199px) {
+			padding: 30px 120px;
 		}
 
-		// .header__logo
+		@media(max-width: 991px) {
+			padding: 30px 60px;
+		}
+	}
 
-		&__logo {
+	&__logo {
+		font-family: "Larsseit";
+		// font-size: 24px;
+		line-height: 27px;
+		letter-spacing: -0.035em;
+		color: #62d0df;
+		text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+
+	&__body {
+		display: flex;
+		align-items: center;
+	}
+
+	&__menu {
+	}
+
+	&__menu-element {
+		
+		// font-family: 'Larsseit';
+		// font-size: 14px;
+		// line-height: 16px;
+		color: green;
+		position: relative;
+		cursor: pointer;
+		line-height: 1; /*задаём высоту строки*/
+		text-decoration: none; /*убираем подчёркивание*/
+		
+
+		&:after {
+			display: block;
+			position: absolute;
+			left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+			width: 0; /*задаём длинну линии до наведения курсора*/
+			height: 2px; /*задаём ширину линии*/
+			background-color: purple; /*задаём цвет линии*/
+			content: "";
+			transition: width 0.3s ease-out; /*задаём время анимации*/
+		}
+		&:hover:after,
+		&:focus:after {
+			width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 		}
 
-		// .header__body
+	   @media(max-width: 766px) {
+		   display: none;
+		   
+	   }
+	}
+	&__menu-element:not(:last-child) {
+		margin-right: 30px;
+	}
 
-		&__body {
-			display: flex;
-		}
-
-		// .header__menu
-
-		&__menu {
-		}
-
-		// .header__menu-element
-
-		&__menu-element {
-			padding-right: 30px;
-		}
-
-		// .header__btn
-
-		&__btn {
-			padding-left: 60px;
-		}
+	&__btn {
+	}
 }
+
 .btn {
+	font-family: "Larsseit";
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #ffffff;
+	background: #62d0df;
+	border-radius: 50px;
+	padding: 15px 25px;
+	border: none;
+	@media(max-width:766px) {
+		display: none;
+	}
+	
+}
+
+.menu-btn {
+	width: 30px;
+	height: 30px;
+	position: relative;
+	z-index: 2;
+	overflow: hidden;
+
+	span {
+		width: 30px;
+		height: 2px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: #222222;
+		transition: 0.5s;
+		cursor: default;
+
+		&:nth-of-type(2) {
+			top: calc(50% - 7px);
+		}
+
+		&:nth-of-type(3) {
+			top: calc(50% + 7px);
+		}
+	}
+
+	&.active span:nth-of-type(1) {
+		display: none;
+	  }
+
+	  &.active span:nth-of-type(2) {
+		top: 50%;
+		transform: translate(-50%, 0%) rotate(45deg);  
+	  }
+	  &.active span:nth-of-type(3) {
+		top: 50%;
+		transform: translate(-50%, 0%) rotate(-45deg); 
+	  }
+
+	@media (min-width: 767px) {
+		display: none;
+	}
+
+}
+
+.menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+    background: #FFEFBA;
+	transform: translateX(-100%);
+	transition: transform 0.5s; 
+}
+.menu.active {
+	transform: translateX(0);
+}
+.menu li {
+	list-style-type: none;
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header__container {
   padding: 30px 180px;
   display: -webkit-box;
@@ -8,16 +9,173 @@
           justify-content: space-between;
 }
 
+@media (max-width: 1199px) {
+  .header__container {
+    padding: 30px 120px;
+  }
+}
+
+@media (max-width: 991px) {
+  .header__container {
+    padding: 30px 60px;
+  }
+}
+
+.header__logo {
+  font-family: "Larsseit";
+  line-height: 27px;
+  letter-spacing: -0.035em;
+  color: #62d0df;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .header__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header__menu-element {
-  padding-right: 30px;
+  color: green;
+  position: relative;
+  cursor: pointer;
+  line-height: 1;
+  /*задаём высоту строки*/
+  text-decoration: none;
+  /*убираем подчёркивание*/
 }
 
-.header__btn {
-  padding-left: 60px;
+.header__menu-element:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0;
+  /*задаём длинну линии до наведения курсора*/
+  height: 2px;
+  /*задаём ширину линии*/
+  background-color: purple;
+  /*задаём цвет линии*/
+  content: "";
+  -webkit-transition: width 0.3s ease-out;
+  transition: width 0.3s ease-out;
+  /*задаём время анимации*/
+}
+
+.header__menu-element:hover:after, .header__menu-element:focus:after {
+  width: 100%;
+  /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+
+@media (max-width: 766px) {
+  .header__menu-element {
+    display: none;
+  }
+}
+
+.header__menu-element:not(:last-child) {
+  margin-right: 30px;
+}
+
+.btn {
+  font-family: "Larsseit";
+  font-size: 14px;
+  line-height: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+  background: #62d0df;
+  border-radius: 50px;
+  padding: 15px 25px;
+  border: none;
+}
+
+@media (max-width: 766px) {
+  .btn {
+    display: none;
+  }
+}
+
+.menu-btn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.menu-btn span {
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #222222;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: default;
+}
+
+.menu-btn span:nth-of-type(2) {
+  top: calc(50% - 7px);
+}
+
+.menu-btn span:nth-of-type(3) {
+  top: calc(50% + 7px);
+}
+
+.menu-btn.active span:nth-of-type(1) {
+  display: none;
+}
+
+.menu-btn.active span:nth-of-type(2) {
+  top: 50%;
+  -webkit-transform: translate(-50%, 0%) rotate(45deg);
+          transform: translate(-50%, 0%) rotate(45deg);
+}
+
+.menu-btn.active span:nth-of-type(3) {
+  top: 50%;
+  -webkit-transform: translate(-50%, 0%) rotate(-45deg);
+          transform: translate(-50%, 0%) rotate(-45deg);
+}
+
+@media (min-width: 767px) {
+  .menu-btn {
+    display: none;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background: #FFEFBA;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.menu.active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.menu li {
+  list-style-type: none;
 }
