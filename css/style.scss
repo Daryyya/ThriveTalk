@@ -1,19 +1,20 @@
+@import "./_null.scss";
+
 .wrapper {
 }
 .header {
 	&__container {
-		padding: 30px 180px;
+		padding: 30px 35px;
 		display: flex;
-
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
 		justify-content: space-between;
 
-		@media(max-width: 1199px) {
-			padding: 30px 120px;
+		@media (max-width: 577px) {
+			padding: 15px 30px;
 		}
 
-		@media(max-width: 991px) {
-			padding: 30px 60px;
-		}
 	}
 
 	&__logo {
@@ -34,7 +35,6 @@
 	}
 
 	&__menu-element {
-		
 		// font-family: 'Larsseit';
 		// font-size: 14px;
 		// line-height: 16px;
@@ -43,7 +43,6 @@
 		cursor: pointer;
 		line-height: 1; /*задаём высоту строки*/
 		text-decoration: none; /*убираем подчёркивание*/
-		
 
 		&:after {
 			display: block;
@@ -60,10 +59,9 @@
 			width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 		}
 
-	   @media(max-width: 766px) {
-		   display: none;
-		   
-	   }
+		@media (max-width: 766px) {
+			display: none;
+		}
 	}
 	&__menu-element:not(:last-child) {
 		margin-right: 30px;
@@ -74,7 +72,7 @@
 }
 
 .btn {
-	font-family: "Larsseit";
+	position: relative;
 	font-size: 14px;
 	line-height: 16px;
 	display: flex;
@@ -82,13 +80,41 @@
 	color: #ffffff;
 	background: #62d0df;
 	border-radius: 50px;
-	padding: 15px 25px;
+	padding: 15px 35px;
 	border: none;
-	@media(max-width:766px) {
+	overflow: hidden;
+	
+	
+	@media (max-width: 766px) {
 		display: none;
 	}
-	
 }
+.btn:after {
+	font-family: FontAwesome;
+	content: "\f060";
+	position: absolute;
+	top: 50%;
+	right: -30px;
+	transform: translateY(-50%);
+	transition: all 200ms ease;
+}
+
+.btn:before {
+	font-family: FontAwesome;
+	content: "\f061";
+	position: absolute;
+	top: 50%;
+	left: -30px;
+	transform: translateY(-50%);
+	transition: all 200ms ease;
+}
+.btn:hover:before {
+	left: 11px;
+}
+.btn:hover:after {
+	right: 11px;
+}
+
 
 .menu-btn {
 	width: 30px;
@@ -119,21 +145,20 @@
 
 	&.active span:nth-of-type(1) {
 		display: none;
-	  }
+	}
 
-	  &.active span:nth-of-type(2) {
+	&.active span:nth-of-type(2) {
 		top: 50%;
-		transform: translate(-50%, 0%) rotate(45deg);  
-	  }
-	  &.active span:nth-of-type(3) {
+		transform: translate(-50%, 0%) rotate(45deg);
+	}
+	&.active span:nth-of-type(3) {
 		top: 50%;
-		transform: translate(-50%, 0%) rotate(-45deg); 
-	  }
+		transform: translate(-50%, 0%) rotate(-45deg);
+	}
 
 	@media (min-width: 767px) {
 		display: none;
 	}
-
 }
 
 .menu {
@@ -143,13 +168,60 @@
 	width: 100%;
 	height: 100%;
 	padding: 15px;
-    background: #FFEFBA;
+	background: rgb(87, 155, 219);
+	opacity: 0.7;
 	transform: translateX(-100%);
-	transition: transform 0.5s; 
+	transition: transform 0.5s;
+	
 }
 .menu.active {
 	transform: translateX(0);
 }
+
+.menu nav {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+}
 .menu li {
 	list-style-type: none;
+	a {
+		text-decoration: none;
+		font-size: 24px;
+		color: black;
+		position: relative;
+		cursor: pointer;
+		line-height: 1; /*задаём высоту строки*/
+		text-decoration: none; /*убираем подчёркивание*/
+
+		&:after {
+			display: block;
+			position: absolute;
+			left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+			width: 0; /*задаём длинну линии до наведения курсора*/
+			height: 2px; /*задаём ширину линии*/
+			background-color: blue; /*задаём цвет линии*/
+			content: "";
+			transition: width 0.3s ease-out; /*задаём время анимации*/
+		}
+		&:hover:after,
+		&:focus:after {
+			width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+		}
+	}
+	button {
+		font-family: "Larsseit";
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: black;
+	background: rgb(125, 187, 228);
+	border-radius: 50px;
+	padding: 15px 25px;
+	border: none;
+	}
 }
