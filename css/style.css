@@ -226,6 +226,25 @@ template {
   color: #ffffff;
 }
 
+.first-block__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.first-block__title {
+  font-size: 48px;
+  line-height: 53px;
+  letter-spacing: -0.035em;
+  color: #22356f;
+}
+
+.first-block__text {
+  font-size: 24px;
+  line-height: 42px;
+  color: #22356f;
+}
+
 .container {
   margin: 0 auto;
   display: -webkit-box;
